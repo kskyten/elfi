@@ -94,7 +94,6 @@ def test_smc():
     assert res.populations[-1].n_batches < 6
 
 
-@pytest.mark.usefixtures('skip_travis')  # very, very slow in Travis, but ok locally
 @slow
 @pytest.mark.usefixtures('with_all_clients')
 def test_BOLFI():
@@ -106,7 +105,7 @@ def test_BOLFI():
 
     bolfi = elfi.BOLFI(log_d, initial_evidence=20, update_interval=10, batch_size=5,
                        bounds=[(-2,2), (-1, 1)])
-    n = 300
+    n = 100
     res = bolfi.infer(n)
     assert bolfi.target_model.n_evidence == n
     acq_x = bolfi.target_model._gp.X
@@ -129,7 +128,7 @@ def test_BOLFI():
     vals_map = dict(t1=np.array([post_map[0]]), t2=np.array([post_map[1]]))
     check_inference_with_informative_data(vals_map, 1, true_params, error_bound=.2)
 
-    n_samples = 100
+    n_samples = 40
     n_chains = 4
     res_sampling = bolfi.sample(n_samples, n_chains=n_chains)
     check_inference_with_informative_data(res_sampling.samples, n_samples//2*n_chains, true_params, error_bound=.2)

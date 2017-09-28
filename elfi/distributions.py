@@ -348,7 +348,7 @@ class MetaGaussian(object):
         return np.exp(self.logpdf(theta))
 
     def rvs(self, size=1, random_state=None):
-        """Sample values from the empirical density.
+        """Sample values from the meta-Gaussian distribution.
 
         Parameters
         ----------

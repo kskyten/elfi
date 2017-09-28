@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.4
+-----
+
+- Added the meta-Gaussian distribution and tools for the empirical estimation of distributions.
+
 0.6.3 (2017-09-28)
 ------------------
 
